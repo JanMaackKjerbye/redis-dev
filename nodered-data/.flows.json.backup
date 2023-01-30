@@ -1,0 +1,91 @@
+[
+    {
+        "id": "f360ddb10125a41c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c088bacf365a9c4f",
+        "type": "redis-config",
+        "name": "172.18.0.2",
+        "options": "{\"host\":\"172.18.0.2\"}",
+        "cluster": false,
+        "optionsType": "json"
+    },
+    {
+        "id": "a4a094cbca28dd1d",
+        "type": "redis-in",
+        "z": "f360ddb10125a41c",
+        "server": "c088bacf365a9c4f",
+        "command": "subscribe",
+        "name": "",
+        "topic": "TEST",
+        "obj": true,
+        "timeout": 0,
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "0244729841ab9ba5"
+            ]
+        ]
+    },
+    {
+        "id": "0244729841ab9ba5",
+        "type": "debug",
+        "z": "f360ddb10125a41c",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "1ccf6360754eeae0",
+        "type": "redis-out",
+        "z": "f360ddb10125a41c",
+        "server": "c088bacf365a9c4f",
+        "command": "publish",
+        "name": "",
+        "topic": "TEST",
+        "obj": true,
+        "x": 510,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "3df99aa5cb9a341a",
+        "type": "inject",
+        "z": "f360ddb10125a41c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "test",
+        "payloadType": "str",
+        "x": 230,
+        "y": 260,
+        "wires": [
+            [
+                "1ccf6360754eeae0"
+            ]
+        ]
+    }
+]
